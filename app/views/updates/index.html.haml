@@ -1,0 +1,39 @@
+- if @error
+  = @error
+- else
+  - @updates.each do |update|
+    .update
+      .update_row
+        .user_handle
+          = update.user_handle
+        .sentiment    
+          = "Sentiment: #{update.sentiment}"
+        .time
+          = update.created_at.strftime("%A, %d %b %Y %l:%M %p")
+        .followers
+          = "Followers: #{update.followers}"
+      .update_body
+        = link_to update.message, update_path(update)
+
+  - percent = (@updates.size.to_f / Update.all.size.to_f) * 100
+  = "#{percent}% of the updates that contain the keywords we are looking for"
+
+:sass
+  .update
+    border: 1px solid grey
+    margin: 15px 0
+    background: pink
+    .update_row
+      display: flex
+      .user_handle
+        flex: 1
+        font-size: 18px
+        font-weight: 800
+      .sentiment
+        flex: 1      
+      .time
+        flex: 1      
+      .followers
+        flex: 1      
+    .update_body
+      padding-left: 15px

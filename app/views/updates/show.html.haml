@@ -1,0 +1,37 @@
+.message
+  = "#{@update.message}"
+.times-received
+  = "Total times received (Followers): #{@update.followers}"
+
+
+.sentiment-score
+  %h2 Sentiment Score:
+  .score
+    = @update.sentiment
+
+:sass
+  .message
+    background: orange
+    border-radius: 5px
+    padding: 25px
+    max-width: 300px
+    border: 1px solid #404040
+  .times-received
+    background: pink
+    border-radius: 3px
+    border: 1px solid #404040
+    padding: 15px
+    max-width: 300px
+  .sentiment-score
+    border: 1px solid #404040
+    border-radius: 3px
+    background: grey
+    max-width: 300px
+    padding: 25px
+    h2
+      margin: 0
+      text-transform: uppercase
+      display: inline
+    .score
+      font-size: 25px
+      text-align: center
